@@ -1,0 +1,15 @@
+:root {
+    --bg-color:#222;
+    --color-light: #f5f2d9;
+    --color-dark: #a59843;
+    --square-size: 80px;
+    --highligth-color: rgba(0,0,0,.3);
+    --attacking-color: rgba(160, 51, 68, 0.55);
+    --checked-color: rgba(186, 19, 35, 0.79);
+}
+
+@media all and (max-width: 450px) {
+    :root {
+        --square-size: 50px;
+    }
+}

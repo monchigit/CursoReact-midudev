@@ -1,0 +1,42 @@
+@import '../../constants.css';
+
+.popup {
+    color: var(--color-dark);
+    margin-left: 30px;
+    position: absolute;
+    width: 640px;
+    height: 640px;
+}
+
+.popup-inner {
+    width: 50%;
+    min-height: 12.5%;
+    background: var(--color-light);
+    position: absolute;
+    border: 8px solid var(--color-light);
+    box-shadow: 0 0 0 8px var(--color-dark);
+}
+
+.popup-inner__center {
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    text-align: center;
+    padding: 1.5em;
+    color: black;
+    border: 8px solid var(--color-dark);
+    box-shadow: 0 0 0 3px var(--color-light);
+}
+
+
+.popup-inner__center h1 {
+    font-size: 2em;
+    margin: 0 0 .5em 0;
+}
+
+.popup-inner__center p {
+    font-size: 1.2em;
+    margin: 0 0 1em 0;
+}
+
+

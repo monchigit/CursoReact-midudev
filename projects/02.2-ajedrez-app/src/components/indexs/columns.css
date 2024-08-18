@@ -1,0 +1,12 @@
+
+.rank-index {
+    display: flex;
+    margin-left: 25px;
+}
+
+.rank-index span {
+    text-align: center;
+    display: grid;
+    grid-template-columns: repeat(1,var(--square-size));
+    grid-row: 1,var(--square-size);
+}
