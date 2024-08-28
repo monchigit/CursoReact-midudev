@@ -1,0 +1,12 @@
+
+.control {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    text-align: center;
+    height: calc(8*var(--square-sixe));
+}
+
+.control button {
+    width: 150px;
+}

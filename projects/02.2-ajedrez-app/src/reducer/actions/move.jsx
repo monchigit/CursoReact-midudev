@@ -1,9 +1,9 @@
 import actionTypes from "./actionTypes"
 
-export const makeNewMove = ({newBoard})=> {
+export const makeNewMove = ({newBoard,newMove})=> {
     return {
             type : actionTypes.NEW_MOVE,
-            payload: {newBoard}
+            payload: {newBoard,newMove}
     }
 }
 
@@ -17,5 +17,17 @@ export const generateAllowedMoves = ({allowedMoves})=> {
 export const clearMoves = ()=> {
     return {
             type : actionTypes.CLEAR_ALLOWED_MOVES
+    }
+}
+
+export const takeBack = ()=> {
+    return {
+            type : actionTypes.TAKE_BACK
+    }
+}
+
+export const reset = ()=> {
+    return {
+            type : actionTypes.RESET
     }
 }

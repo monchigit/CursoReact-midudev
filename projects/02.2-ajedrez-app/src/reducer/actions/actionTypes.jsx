@@ -7,6 +7,10 @@ const actionTypes = {
     PROMOTION_CLOSE : 'PROMOTION_CLOSE',
     CAN_CASTLE : 'CAN_CASTLE',
     STALEMATE : 'STALEMATE',
+    INSUFFICIENT_MATERIAL : 'INSUFFICIENT_MATERIAL',
+    WIN : 'WIN',
+    TAKE_BACK : 'TAKE_BACK',
+    RESET : 'RESET',
 }
 
 export default actionTypes

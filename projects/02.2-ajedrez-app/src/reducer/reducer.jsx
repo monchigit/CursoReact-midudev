@@ -1,20 +1,26 @@
-import { Status } from "../constant"
+import { initGameState, Status } from "../constant"
 import actionTypes from "./actions/actionTypes"
 
 export const reducer = (state,action) => {
     switch (action.type) {
         case actionTypes.NEW_MOVE: { 
-            let {turn,position} = state
+            let {turn,movesList,position} = state
             
             position = [
                 ...position,
                 action.payload.newBoard
+            ]
+            
+            movesList = [
+                ...movesList,
+                action.payload.newMove
             ]
 
             turn = turn === 'w' ? 'b' : 'w'
             
             return {
                 ...state,
+                movesList,
                 turn,
                 position 
                 }
@@ -68,11 +74,54 @@ export const reducer = (state,action) => {
                     status : Status.stalemate
                 }
             }
-        
+                
+            case actionTypes.INSUFFICIENT_MATERIAL: {
+                return {
+                    ...state,
+                    status : Status.insufficient
+                }
+            }
+                
+            case actionTypes.WIN: {
+                return {
+                    ...state,
+                    status : action.payload === 'w' 
+                    ? Status.white 
+                    : Status.black
+                }
+            }
                 
             case actionTypes.NEW_GAME: {
                 return {
                     ...action.payload
+                }
+            }
+
+            case actionTypes.TAKE_BACK: {
+
+                let {position,movesList,turn} = state
+
+                if (position.length > 1) {
+                    position = position.slice(0,position.length-1)
+                    movesList = movesList.slice(0,movesList.length-1)
+                    turn = turn === 'w' ? 'b' : 'w'
+                }
+
+                return {
+                    ...state,
+                    position,
+                    movesList,
+                    turn
+                }
+            }
+        
+
+            case actionTypes.RESET: {
+
+                state = initGameState
+
+                return {
+                    ...state,
                 }
             }
         

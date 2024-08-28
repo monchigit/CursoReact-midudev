@@ -4,6 +4,8 @@
   place-content: center;
   display: grid;
   height: 100vh;
+  grid-template-columns: auto 220px;
+  gap: 0 60px;
 }
 
 button {

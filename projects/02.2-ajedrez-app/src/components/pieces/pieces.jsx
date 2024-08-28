@@ -7,7 +7,8 @@ import arbiter from '../../arbiter/arbiter.jsx';
 
 import './pieces.css';
 import { getCastleDirection } from '../../arbiter/getMove.jsx';
-import { detectStalemate, updateCastling } from '../../reducer/actions/game.jsx';
+import { detectCheckMate, detectInsufficientMaterial, detectStalemate, updateCastling } from '../../reducer/actions/game.jsx';
+import { getNewMoveNotation } from '../../helper.jsx';
 
 export const Pieces = ()=> {
     
@@ -62,10 +63,22 @@ export const Pieces = ()=> {
                 piece,row,column,
                 x,y
             })
-            dispatch(makeNewMove({newBoard}))
 
-            if (arbiter.isStalemate(newBoard,opponent,castleDirection))
+            const newMove = getNewMoveNotation({
+                piece,row,column,x,y,position : currentPosition
+            })
+
+            dispatch(makeNewMove({newBoard,newMove}))
+
+            if (arbiter.insufficientMaterial(newBoard)){
+                dispatch(detectInsufficientMaterial())
+            } 
+            else if (arbiter.isStalemate(newBoard,opponent,castleDirection)) {
                 dispatch(detectStalemate())
+            }
+            else if (arbiter.isCheckMate(newBoard,opponent,castleDirection)) {
+                dispatch(detectCheckMate(piece[0]))
+            }
             
         }
         dispatch(clearMoves())

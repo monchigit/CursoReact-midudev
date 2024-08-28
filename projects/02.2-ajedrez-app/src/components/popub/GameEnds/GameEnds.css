@@ -1,30 +1,18 @@
-@import '../../../constants.css';
 
-.promotion-choices {
-    height: 12.5%;
+.wins {
+    height: var(--square-size);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
-.promotion-choices .piece {
-    width: 25%;
-    height: 100%;
-}
+.wins.White {background-image: url(../../../img/wk.png);}
+.wins.Black {background-image: url(../../../img/bk.png);}
 
-.promotion-choices .piece:hover {
-    box-shadow: 0 0 0 5px var(--color-dark) inset;
-    transform: scale(1.05);
-}
-
-.promotion-choices :is(.wq,.bq) {
-    left: 0;
-}
-
-.promotion-choices :is(.wb,.bb) {
-    left: 25%;
-}
-
-.promotion-choices :is(.wh,.bh) {
-    left: 50%;
-}
-.promotion-choices :is(.wr,.br) {
-    left: 75%;
+.draws {
+    height: var(--square-size);
+    background-size: contain;
+    background-repeat: no-repeat, no-repeat;
+    background-position: 35% center, 65% center;
+    background-image: url(../../../img/wk.png),url(../../../img/bk.png);
 }

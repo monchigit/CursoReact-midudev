@@ -5,11 +5,11 @@ const FollowMouse = ()=> {
   const [position, setPosition] = useState({x:0 , y:0})
   
   useEffect(()=> {
-    console.log('enabled ',{enabled});
+    ('enabled ',{enabled});
   
     const handleMove = event => {
       const {clientX,clientY} = event
-      console.log('handleMove', {clientX,clientY});
+      ('handleMove', {clientX,clientY});
       setPosition({x:clientX , y:clientY})
     }
   

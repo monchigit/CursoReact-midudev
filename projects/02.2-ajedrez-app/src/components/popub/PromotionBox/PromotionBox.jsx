@@ -1,6 +1,6 @@
 
 import { useAppContext } from '../../../contexts/contexts'
-import { copyBoard } from '../../../helper'
+import { copyBoard, getNewMoveNotation } from '../../../helper'
 import { clearMoves, makeNewMove } from '../../../reducer/actions/move'
 import './PromotionBox.css'
 
@@ -37,9 +37,18 @@ const PromotionBox = ({ onClosePopup }) => {
     const onClick = option => {
         onClosePopup()
         const newBoard = copyBoard(appState.position[appState.position.length -1])
+        
         newBoard[promotionSquare.row][promotionSquare.column] = ''
         newBoard[promotionSquare.x][promotionSquare.y] = color+option
-        dispatch(makeNewMove({newBoard}))
+
+        const newMove = getNewMoveNotation({
+            ...promotionSquare,
+            piece : color + 'p',
+            promotesTo : option,
+            position : appState.position[appState.position.length-1]
+        })
+        
+        dispatch(makeNewMove({newBoard,newMove}))
         dispatch(clearMoves())
     }
 

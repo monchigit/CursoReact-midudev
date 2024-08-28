@@ -6,8 +6,7 @@ import { setUpNewGame } from '../../../reducer/actions/game'
 // import { clearMoves, makeNewMove } from '../../../reducer/actions/move'
 import './GameEnds.css'
 
-// eslint-disable-next-line react/prop-types
-const GameEnds = ({ onClosePopup }) => {
+const GameEnds = () => {
 
     const {appState: {status}, dispatch} = useAppContext()
     
