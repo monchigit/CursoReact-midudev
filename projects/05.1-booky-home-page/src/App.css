@@ -1,42 +1,102 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+* {
+    margin: 0;
+    padding: 0;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+body {
+    background-color: #222;
+    color: #fff;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.home {
+    padding: 20px;
+    display: grid;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.home-search {
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
-.card {
-  padding: 2em;
+.home-search__h4 {
+    color: #f23;
+    font-weight: bold;
 }
 
-.read-the-docs {
-  color: #888;
+.home-search__form {
+    margin: 20px;
+    display: flex;
+    justify-content:space-between;
+    width: 50%;
+    height: 50px;
+}
+
+.home-search__form-input {
+    border: none;
+    outline: none;
+    color: #fff;
+    width: 60%;
+    height: 80%;
+    font-size: 1.1em;
+    padding: 4px 10px;
+    border-radius: 5px;
+    background-color: #111;
+}
+
+.home-search__form-button {
+    align-self: center;
+    width: 25%;
+    height: 90%;
+    padding: 4px 10px;
+    font-size: 1.1rem;
+    background-color: #f27b0b;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+.home-main {
+    width: 100%;
+}
+
+.home-main__books {
+    list-style: none;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
+    grid-template-rows: repeat(auto-fit,minmax(200px,1fr));
+    gap: 50px;
+}
+
+
+
+.home-main__books-book {
+    background: #111;
+    box-shadow: 2px 3px 2px 2px #f27b0b;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.home-main__books-book-h3, .home-main__books-book-p {
+    padding: 10px;
+    text-align: center;
+}
+
+h3 {
+    margin-top: 10px;
+}
+
+
+.home-main__books-book-img {
+    height: 60%;
+    width: 65%;
+    align-self: center;
+    margin: 5px;
 }

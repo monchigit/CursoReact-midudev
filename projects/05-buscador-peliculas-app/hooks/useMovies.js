@@ -9,7 +9,7 @@ export function useMovies ({ search ,sort }) {
     
     const getMovies = useCallback(
         async ({ search })=> {
-            if (search === previousSearch.current) return 
+            if (previousSearch.current === search) return 
             try {
                 setLoading(true)
                 previousSearch.current = search

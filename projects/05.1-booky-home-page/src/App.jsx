@@ -1,34 +1,68 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { useEffect, useRef, useState } from 'react'
+import { Books } from './components/BooksList'
 import './App.css'
+import { useBooks } from './Hooks/UseBooks'
+
+const useSearch = ()=> {
+  const [ search, updateSearch ] = useState('')
+  const [ error, setError ] = useState(null)
+  const isFirstInput = useRef(true)
+  
+  useEffect(()=>{
+    if (isFirstInput.current && search === '') {
+      isFirstInput.current = false
+      console.log(isFirstInput);
+      return
+    }
+    if (search.length < 2) {
+      setError('La búsqueda debe incluir al menos dos caracteres')
+      return
+    }
+    setError(null)
+  },[search])
+  return ({ search, updateSearch, error })
+}
+
 
 function App() {
-  const [count, setCount] = useState(0)
+  
+  const { search, updateSearch, error } = useSearch()
+  const { books, getBooks, loading } = useBooks({ search })
+  const isFirstSubmit = useRef(true)
+  
+  const handleChange = e => {
+    const newSearch = e.target.value
+    updateSearch(newSearch)
+  }
 
+  const handleSubmit = e => {
+    e.preventDefault()
+    isFirstSubmit.current = false
+    getBooks({ search })
+  }
+  
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <div className='home' >
+
+      <header>
+
+      </header>
+
+
+
+      <section className='home-search' >
+        <h1 className='home-search__h1' >Search the title that you want to read!</h1>
+        <form onSubmit={handleSubmit} className='home-search__form' >
+          <input placeholder='It, Harry Potter, The Hobbit... ' value={search} onChange={handleChange} className='home-search__form-input' />
+          <button type='submit' className='home-search__form-button' >Search</button>
+        </form>
+        {error && <h4 className='home-search__h4' >{error}</h4>}
+      </section>
+
+      <main className='home-main' >
+        {loading ? <p className='home-main__loading'>Loading...</p> :  <Books books={books} isFirstSubmit={isFirstSubmit.current}/>}
+      </main>
+    </div>
   )
 }
 
