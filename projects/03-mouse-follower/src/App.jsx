@@ -8,8 +8,7 @@ const FollowMouse = ()=> {
     ('enabled ',{enabled});
   
     const handleMove = event => {
-      const {clientX,clientY} = event
-      ('handleMove', {clientX,clientY});
+      const {clientX,clientY} = event('handleMove', {clientX,clientY});
       setPosition({x:clientX , y:clientY})
     }
   
@@ -21,6 +20,7 @@ const FollowMouse = ()=> {
       window.removeEventListener('pointermove', handleMove)
     }
   }, [enabled])
+  
   return (
     <>
       <div style={{
@@ -36,7 +36,9 @@ const FollowMouse = ()=> {
         transform: `translate(${position.x}px,${position.y}px)`
       }}
       />
-      <button onClick={()=> setEnabled(!enabled)}>{enabled ? 'Desactivar' : 'Activar'} seguir puntero</button>
+      <button onClick={()=> setEnabled(!enabled)}>
+      {enabled ? 'Desactivar' : 'Activar'} seguir puntero
+      </button>
     </>
   )
 }

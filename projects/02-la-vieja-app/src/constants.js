@@ -13,4 +13,9 @@ export const WINNER_COMBOS = [
     [2,5,8],
     [0,4,8],
     [2,4,6]
-    ]
+]
+
+export const initialConditions = {
+    board: Array(9).fill(null),
+    turn: TURNS.X
+}
