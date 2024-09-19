@@ -19,7 +19,6 @@ export function useBooks ({ search }) {
             } catch (e) {
                 setError(e.message)
                 console.log();
-                
             } finally {
                 setLoading(false)
             }

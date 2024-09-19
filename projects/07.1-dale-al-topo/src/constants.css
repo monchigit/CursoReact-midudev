@@ -1,0 +1,6 @@
+:root {
+  --color-wrong : rgba(186, 19, 35, 1);
+  --color-target : #dc5e0f;
+  --color-selected : #87ed53;
+  --square-size : 150px;
+}

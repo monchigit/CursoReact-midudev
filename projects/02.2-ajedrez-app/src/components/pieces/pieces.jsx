@@ -11,14 +11,13 @@ import { detectCheckMate, detectInsufficientMaterial, detectStalemate, updateCas
 import { getNewMoveNotation } from '../../helper.jsx';
 
 export const Pieces = ()=> {
-    
     const {appState,dispatch} = useAppContext()
 
     const currentPosition = appState.position[appState.position.length-1]
     
     const ref = useRef()
     const calculateCoords = e => {
-        const {width,left,top} = ref.current.getBoundingClientRect();
+        const {width, left, top} = ref.current.getBoundingClientRect();
         const size = width / 8
         const y = Math.floor((e.clientX - left)/size)
         const x = 7 - Math.floor((e.clientY - top)/size)

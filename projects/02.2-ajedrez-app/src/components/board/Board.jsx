@@ -53,16 +53,12 @@ export function Board() {
                         <div key={row+'-'+column} className={getClassName(7-i,j)}></div>
             )))}
             </div>
-
             <Pieces/>
-
             <Popup>
                 <PromotionBox/>
                 <GameEnds/>
             </Popup>
-
             <ColumnIndex columns={columns}></ColumnIndex>
-
         </div>
     )
 }
