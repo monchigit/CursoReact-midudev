@@ -11,6 +11,6 @@ export function Turn ({ turn }) {
             <Square isSelected={turn==TURNS.O}>
                 {TURNS.O}
             </Square>
-      </section>
+        </section>
     )
 }

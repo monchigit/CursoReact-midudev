@@ -2,7 +2,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 
 import { useEffect, useRef } from 'react'
-import { board, gameStatus } from '../constants'
+import { board, gameStatus, gameTargets } from '../constants'
 import { isTarget } from '../helper'
 import { useTarget } from '../hooks/UseTarget'
 import { useTimers } from '../hooks/useTimer'
@@ -70,17 +70,15 @@ export function Squares ({ status, over }) {
       initMove()
     } if (status.state === gameStatus.paused) {
       pauseMove(targetPos)
-      console.log();
-      
-    }
+    } 
   }, [status.state])
   
   const handleClick = e => {
-    if (e.target === targetSquare && gameMatch.current < 10) {
+    if (e.target === targetSquare && gameMatch.current < gameTargets.regular) {
       console.log('match');
       newMatchMove()
     }
-    if (status.state === gameStatus.ongoing && gameMatch.current >= 10) {
+    if (status.state === gameStatus.ongoing && gameMatch.current >= gameTargets.regular) {
       console.log('game over');
       newGameOver()
     }
@@ -90,19 +88,17 @@ export function Squares ({ status, over }) {
   }
 
   return (
-    <div className='squares'>{
+    <div className='board-squares'>{
       board.rows.map((row, i) =>
         board.columns.map((column, j) => {
           const pos = `${i + 1}-${j + 1}`
-          const posClass = `square ${i + 1}-${j + 1}`
+          const posClass = `board-square ${i + 1}-${j + 1}`
           return (
             <div 
             key={row+'-'+column}
             className={ isTarget(pos, targetPos) ? `${posClass} target` : `${posClass}` }
             onClick={ handleClick }
-            >
-              {`${i + 1} ${j+1}`}
-            </div>
+            />
           )
         }
         )

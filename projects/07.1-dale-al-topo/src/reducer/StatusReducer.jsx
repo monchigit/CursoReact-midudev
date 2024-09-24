@@ -29,12 +29,22 @@ export const statusReducer = (state, action) => {
       state
     }
   }
-  if (actionType === gameActions.END && actionPayload !== state.state) {
+  if (actionType === gameActions.END && actionPayload === state.state) {
     console.log('change 4');
     
-    state = gameStatus.initial
+    state = gameStatus.over
     return {
       state
+    }
+  }
+  if (actionType === gameActions.NEWTIME && actionPayload.state === state.state) {
+    console.log('change 5');
+    
+    state = gameStatus.over
+    let time = actionPayload.time
+    return {
+      state,
+      time
     }
   }
   else return state

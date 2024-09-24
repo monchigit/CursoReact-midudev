@@ -10,6 +10,7 @@ export const gameActions = {
   PAUSE : 'PAUSE',
   RESET : 'RESET',
   END : 'END',
+  NEWTIME:'NEWTIME',
 }
 
 export const initialConditions = {
@@ -25,4 +26,8 @@ export const time = {
   firstTime : 3500,
   waitTime : 2000,
   updateTime : 1000,
+}
+
+export const gameTargets = {
+  regular : 2,
 }

@@ -5,12 +5,14 @@ import { Records } from './components/Records'
 
 function App() {
   return (
-    <>
-      <h1>Dale al Topo</h1>
-      <Board />
-      <Options />
+    <main className="game">
+      <section className="game-board">
+        <h1 className="game-h1">Dale al Topo</h1>
+        <Board />
+        <Options />
+      </section>
       <Records />
-    </>
+    </main>
   )
 }
 

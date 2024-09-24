@@ -28,10 +28,20 @@ export function useStatusReducer () {
   
   const over = () => {
     dispatch({
-      type : gameActions.RESET,
-      payload : gameStatus.initial
+      type : gameActions.END,
+      payload : gameStatus.ongoing
     })
   }
   
-  return { status, start, pause, reset, over }
+  const endTime = (sec) => {
+    dispatch({
+      type : gameActions.NEWTIME,
+      payload : {
+        state : gameStatus.over,
+        time : sec
+      }
+    })
+  }
+  
+  return { status, start, pause, reset, over, endTime }
 }
