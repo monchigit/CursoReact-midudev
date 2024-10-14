@@ -30,7 +30,7 @@ export const useGameState = ()=> {
   
   
     const updateBoard = (index)=> {
-      //no actualizamos esta posicion si ya tiene algo
+      //no actualizamos esta posición si ya tiene algo
       if (board[index] || winner) return
       //actualizar el tablero
       const newBoard = [...board]
